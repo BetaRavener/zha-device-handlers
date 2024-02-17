@@ -340,3 +340,25 @@ class PhilipsRwlRemoteCluster(PhilipsRemoteCluster):
         3: Button("down", DIM_DOWN),
         4: Button("off", TURN_OFF),
     }
+
+
+class PhilipsEffectCluster(CustomCluster):
+    """Philips effect cluster."""
+
+    cluster_id = 0xFC03
+    ep_attribute = "philips_effect"
+
+    class ServerCommandDefs(foundation.BaseCommandDefs):
+        """Server command definitions."""
+
+        set_effect: Final = foundation.ZCLCommandDef(
+            id=0x00,
+            schema={
+                "param1": t.uint8_t,
+                "param2": t.uint8_t,
+                "param3": t.uint8_t,
+                "param4": t.uint8_t,
+            },
+            direction=foundation.Direction.Client_to_Server,
+            is_manufacturer_specific=True,
+        )
