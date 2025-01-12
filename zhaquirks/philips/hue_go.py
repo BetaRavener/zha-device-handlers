@@ -1,6 +1,7 @@
 """Philips Hue Go device."""
 
 from zigpy.quirks.v2 import QuirkBuilder
+
 from zhaquirks.philips import PHILIPS, PhilipsEffectCluster
 
 (
